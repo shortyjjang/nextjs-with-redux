@@ -1,28 +1,11 @@
 "use client";
 
-import { useAppSelector, useAppStore } from "@/store";
-import { setTestData } from "@/store/testReducer";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Landing() {
-  const answers = useAppSelector((state) => state.test.value);
   const router = useRouter();
-  const store = useAppStore();
-  const getLoadingTestData = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/get-test-data`
-      );
-      const data = await response.json();
-      store.dispatch(setTestData(data.examQuestions));
-    } catch (error) {
-      if (process.env.NODE_ENV === "development") console.error(error);
-    }
-  };
-  useEffect(function init() {
-    getLoadingTestData();
-  }, []);
+
   return (
     <div className="flex flex-col items-center justify-between max-h-[500px] h-full">
       <h1 className="text-2xl font-bold">
@@ -37,7 +20,7 @@ export default function Landing() {
       </p>
       <button
         className="bg-black text-white rounded-sm px-8 py-3 font-medium"
-        onClick={() => answers.length > 0 && router.push("/test")}
+        onClick={() => router.push("/test")}
       >
         시작하기
       </button>

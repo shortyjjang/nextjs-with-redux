@@ -1,4 +1,4 @@
-'use client'
+
 import Landing from "@/feature/test/Landing";
 import React from "react";
 export default function Home() {

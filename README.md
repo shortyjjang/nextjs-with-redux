@@ -1,37 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MBTI 테스트 프로젝트
 
-## Getting Started
+이 프로젝트는 Redux를 사용하여 MBTI 테스트를 구현한 Next.js 애플리케이션입니다. 사용자는 질문에 답변하고, 완료된 질문 수와 총 점수를 확인할 수 있습니다.
 
-First, run the development server:
+## 기술 스택
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js**: 15.1.6
+- **React**: 19.0.0
+- **Redux Toolkit**: 2.5.1
+- **React Redux**: 9.2.0
+- **TypeScript**: 5.x
+- **Tailwind CSS**: 3.4.1
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 폴더 구조
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+src/
+├── app/
+│ ├── api/
+│ │ └── [...pathname]/route.ts
+│ ├── layout.tsx
+│ ├── page.tsx
+│ └── test/
+│ └── page.tsx
+├── feature/
+│ └── test/
+│ ├── Landing.tsx
+│ ├── Question.tsx
+│ └── TestProvider.tsx
+├── store/
+│ ├── index.ts
+│ ├── StoreProvider.tsx
+│ └── testReducer.ts
+└── app/globals.css
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 주요 폴더 및 파일 설명
 
-To learn more about Next.js, take a look at the following resources:
+### `src/app/`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **`layout.tsx`**: 애플리케이션의 기본 레이아웃을 정의합니다. `StoreProvider`를 사용하여 Redux 스토어를 제공합니다.
+- **`page.tsx`**: 홈 페이지 컴포넌트를 정의합니다. `Landing` 컴포넌트를 렌더링합니다.
+- **`test/page.tsx`**: 테스트 페이지를 정의합니다. `Question` 컴포넌트를 렌더링합니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### `src/feature/test/`
 
-## Deploy on Vercel
+- **`Landing.tsx`**: 테스트 시작 페이지를 구성합니다. 사용자가 테스트를 시작할 수 있는 버튼을 제공합니다.
+- **`Question.tsx`**: 질문과 답변을 표시하고, 사용자가 답변을 선택할 수 있도록 합니다.
+- **`TestProvider.tsx`**: 테스트 관련 상태를 관리하는 컨텍스트를 제공합니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `src/store/`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# nextjs-with-redux
+- **`index.ts`**: Redux 스토어를 설정하고, `useAppDispatch` 및 `useAppSelector` 훅을 정의합니다.
+- **`StoreProvider.tsx`**: Redux `Provider`를 설정하여 애플리케이션에 스토어를 제공합니다.
+- **`testReducer.ts`**: 테스트 관련 상태와 리듀서를 정의합니다. 질문 데이터와 사용자의 답변을 관리합니다.
+
+### `src/app/api/[...pathname]/route.ts`
+
+- API 엔드포인트를 정의하여 질문 데이터를 제공합니다.
+
+### `src/app/globals.css`
+
+- Tailwind CSS를 사용하여 전역 스타일을 정의합니다.
+
+## 시작하기
+
+1. **설치**: 프로젝트의 의존성을 설치합니다.
+   ```bash
+   npm install
+   ```
+
+2. **개발 서버 실행**: 개발 서버를 시작합니다.
+   ```bash
+   npm run dev
+   ```
+
+3. **빌드**: 프로덕션 빌드를 생성합니다.
+   ```bash
+   npm run build
+   ```
+
+4. **시작**: 프로덕션 서버를 시작합니다.
+   ```bash
+   npm start
+   ```
+
+## 기능
+
+- 사용자는 질문에 답변할 수 있으며, 각 질문에 대해 여러 선택지를 제공합니다.
+- 완료된 질문 수와 총 점수를 계산하여 표시합니다.
+- 모든 질문에 답변이 완료되면 "완료하기" 버튼이 활성화됩니다.
+
+이 프로젝트는 Redux를 사용하여 상태 관리를 효율적으로 수행하며, React와 Next.js의 기능을 활용하여 사용자 인터페이스를 구성합니다.

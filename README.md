@@ -14,22 +14,39 @@
 ## 폴더 구조
 
 src/
+
 ├── app/
+
 │ ├── api/
+
 │ │ └── [...pathname]/route.ts
+
 │ ├── layout.tsx
+
 │ ├── page.tsx
+
 │ └── test/
+
 │ └── page.tsx
+
 ├── feature/
+
 │ └── test/
+
 │ ├── Landing.tsx
+
 │ ├── Question.tsx
+
 │ └── TestProvider.tsx
+
 ├── store/
+
 │ ├── index.ts
+
 │ ├── StoreProvider.tsx
+
 │ └── testReducer.ts
+
 └── app/globals.css
 
 
